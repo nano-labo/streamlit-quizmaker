@@ -149,7 +149,25 @@ st.subheader(f"第 {st.session_state.quiz_index + 1} 問 / {len(quiz_data)} 問�
 st.write(current_quiz["question"])
 
 # 回答選択
-selected = st.radio("選択肢を選んでください", current_quiz["options"], key=st.session_state.quiz_index)
+#selected = st.radio("選択肢を選んでください", current_quiz["options"], key=st.session_state.quiz_index)
+
+# 回答選択肢をボタンで表示
+selected = None
+for i, option in enumerate(current_quiz["options"]):
+    if st.button(option):
+        selected = i
+
+# 回答ボタン
+if selected is not None and not st.session_state.answered:
+    correct = current_quiz["answer"]
+    if selected == correct:
+        st.success("正解！")
+        st.session_state.score += 1
+    else:
+        st.error(f"不正解。正解は「{current_quiz['options'][correct]}」です。")
+    st.session_state.answered = True
+
+
 
 # 回答ボタン
 if st.button("回答する") and not st.session_state.answered:
