@@ -40,16 +40,12 @@ def display_history(messages):
         display_msg_content(message)
 
 def display_msg_content(message):
-    #st.write(message)
-    #st.write(message.content)
     with st.chat_message(message["role"]):
         st.write(message["content"])
-        #st.write(message["content"][0]["text"])
 
 client = OpenAI()
 
 st.title("猫ボット")
-#st.write("猫チャットボットは、夏目漱石の「吾輩は猫である」の猫の口調・性格で質問に答えるAIです。")
 st.write("吾輩は猫である。何でも好きなように聞くがよい。")
 
 st.divider()
@@ -60,9 +56,7 @@ fine_tuned_job = client.fine_tuning.jobs.retrieve(MY_JOB_ID)
 
 #input_message = st.text_input(label="さて、何を聞きたいのかな。")
 input_message = st.chat_input("さて、何を聞きたいのかな。")
-#text_count = len(input_message)
 
-#print(f"Input: {input_message}")
 
 if "messages" not in st.session_state:
     st.session_state.messages = []
@@ -71,12 +65,12 @@ display_history(st.session_state.messages)
 
 if "button_menu" not in st.session_state:
     st.session_state["button_menu"] = ""
+
 if st.session_state["button_menu"]:
     st.write(st.session_state["button_menu"])
     input_message = st.session_state["button_menu"]
     st.session_state["button_menu"] = ""
 
-#if st.button("聞く"):
 if input_message:
     #以下は、質問に対してLLMからの回答を得るコードです。
     completion = client.chat.completions.create(
@@ -86,21 +80,13 @@ if input_message:
             {"role": "user", "content": input_message}
         ]
     )
-    #st.write(completion)
-    #msg = completion.choices[0].message.content
-    #st.write(msg)
     msg = completion.choices[0].message
-    #st.write(msg.content)
-    #display_msg_content(msg)
-    #display_msg_content({"role": "assistant", "content": msg.content})
     
     with st.chat_message("user"):
         st.markdown(input_message)
     with st.chat_message("assistant"):
         st.markdown(msg.content)
     
-    #st.session_state.messages.append(input_message)
-    #st.session_state.messages.append(msg)
     st.session_state.messages.append({"role": "user", "content": input_message})
     st.session_state.messages.append({"role": "assistant", "content": msg.content})
 
