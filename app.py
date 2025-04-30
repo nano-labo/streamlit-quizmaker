@@ -6,6 +6,8 @@ env\Scripts\activate.bat
 pip install --upgrade pip
 pip install streamlit==1.41.1 openai==1.47.0 httpx==0.27.2 python-dotenv
 
+pip freeze > requirements.txt
+
 streamlit run app.py
 
 
