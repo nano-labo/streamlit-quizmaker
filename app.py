@@ -218,6 +218,7 @@ if st.session_state.answered and st.button("次の問題へ"):
         st.write("🎉 クイズ終了！")
         st.write(f"あなたのスコア: {st.session_state.score} / {len(quiz_data)}")
         display_menu()
+        st.session_state.quiz_index = 0
         st.stop()
     else:
         st.rerun()
