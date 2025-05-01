@@ -90,17 +90,15 @@ if input_message:
     st.session_state.messages.append({"role": "user", "content": input_message})
     st.session_state.messages.append({"role": "assistant", "content": msg.content})
 
-
-'''
-if st.button("今日の天気は"):
-    st.session_state["button_menu"] = "今日の天気は"
-    st.write(st.session_state["button_menu"])
-    st.rerun()
-if st.button("おすすめのレシピは"):
-    st.session_state["button_menu"] = "おすすめのレシピは"
-    st.write(st.session_state["button_menu"])
-    st.rerun()
-'''
+# コメント切替 CTRL + /
+# if st.button("今日の天気は"):
+#     st.session_state["button_menu"] = "今日の天気は"
+#     st.write(st.session_state["button_menu"])
+#     st.rerun()
+# if st.button("おすすめのレシピは"):
+#     st.session_state["button_menu"] = "おすすめのレシピは"
+#     st.write(st.session_state["button_menu"])
+#     st.rerun()
 
 
 if "count" not in st.session_state:
