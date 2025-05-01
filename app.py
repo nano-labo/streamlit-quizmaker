@@ -149,8 +149,7 @@ if "score" not in st.session_state:
 if "answered" not in st.session_state:
     st.session_state.answered = False
 
-# ジャンルが未選択の場合、ジャンル選択ボタンを表示
-if st.session_state.genre is None:
+def display_menu():
     st.title("クイズジャンルを選んでください")
     col1, col2, col3 = st.columns(3)
     with col1:
@@ -166,6 +165,11 @@ if st.session_state.genre is None:
             st.session_state.genre = "野球"
             st.rerun()
     st.stop()
+
+
+# ジャンルが未選択の場合、ジャンル選択ボタンを表示
+if st.session_state.genre is None:
+    display_menu()
 
 # 現在のクイズ
 genre = st.session_state.genre
@@ -207,6 +211,7 @@ if st.session_state.answered and st.button("次の問題へ"):
     if st.session_state.quiz_index >= len(quiz_data):
         st.write("🎉 クイズ終了！")
         st.write(f"あなたのスコア: {st.session_state.score} / {len(quiz_data)}")
+        display_menu()
         st.stop()
     else:
         st.rerun()
