@@ -133,12 +133,29 @@ quiz_data = [
 ]
 
 # セッションステートで状態を管理
+if "genre" not in st.session_state:
+    st.session_state.genre = None
 if "quiz_index" not in st.session_state:
     st.session_state.quiz_index = 0
 if "score" not in st.session_state:
     st.session_state.score = 0
 if "answered" not in st.session_state:
     st.session_state.answered = False
+
+# ジャンルが未選択の場合、ジャンル選択ボタンを表示
+if st.session_state.genre is None:
+    st.title("クイズジャンルを選んでください")
+    col1, col2, col3 = st.columns(3)
+    with col1:
+        if st.button("サッカー"):
+            st.session_state.genre = "サッカー"
+    with col2:
+        if st.button("テニス"):
+            st.session_state.genre = "テニス"
+    with col3:
+        if st.button("野球"):
+            st.session_state.genre = "野球"
+    st.stop()
 
 # 現在のクイズ
 current_quiz = quiz_data[st.session_state.quiz_index]
