@@ -1,3 +1,4 @@
+st.session_state.quiz_index
 """
 cd nekobot/streamlit-nekobot
 python -m venv env
