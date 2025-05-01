@@ -1,4 +1,3 @@
-st.session_state.quiz_index
 """
 cd nekobot/streamlit-nekobot
 python -m venv env
@@ -145,6 +144,7 @@ if "genre" not in st.session_state:
     st.session_state.genre = None
 if "quiz_index" not in st.session_state:
     st.session_state.quiz_index = 0
+st.session_state.quiz_index
 if "score" not in st.session_state:
     st.session_state.score = 0
 if "answered" not in st.session_state:
