@@ -174,6 +174,7 @@ if st.session_state.genre is None:
 # 現在のクイズ
 genre = st.session_state.genre
 quiz_data = quiz_data_all[genre]
+st.session_state.quiz_index
 current_quiz = quiz_data[st.session_state.quiz_index]
 
 st.title("⚽ サッカー日本代表クイズ")
