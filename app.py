@@ -144,14 +144,13 @@ if "genre" not in st.session_state:
     st.session_state.genre = None
 if "quiz_index" not in st.session_state:
     st.session_state.quiz_index = 0
-st.session_state.quiz_index
 if "score" not in st.session_state:
     st.session_state.score = 0
 if "answered" not in st.session_state:
     st.session_state.answered = False
 
 def display_menu():
-    st.title("クイズジャンルを選んでください")
+    st.write("クイズジャンルを選んでください")
     col1, col2, col3 = st.columns(3)
     with col1:
         if st.button("サッカー"):
@@ -178,9 +177,6 @@ if st.session_state.genre is None:
 # 現在のクイズ
 genre = st.session_state.genre
 quiz_data = quiz_data_all[genre]
-genre
-st.session_state.quiz_index
-len(quiz_data)
 current_quiz = quiz_data[st.session_state.quiz_index]
 
 st.title("⚽ サッカー日本代表クイズ")
@@ -219,7 +215,6 @@ if st.session_state.answered and st.button("次の問題へ"):
         st.write("🎉 クイズ終了！")
         st.write(f"あなたのスコア: {st.session_state.score} / {len(quiz_data)}")
         st.session_state.quiz_index = 0
-        st.session_state.quiz_index
         st.session_state.genre = None
         display_menu()
         st.stop()
