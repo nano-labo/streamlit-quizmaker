@@ -302,8 +302,8 @@ def display_menu():
             st.session_state.quiz_index = 0
             st.rerun()
     with col4:
-        if st.button("正解遺産"):
-            st.session_state.genre = "野球"
+        if st.button("世界遺産"):
+            st.session_state.genre = "世界遺産"
             st.session_state.quiz_index = 0
             st.rerun()
     st.stop()
