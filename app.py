@@ -155,14 +155,17 @@ def display_menu():
     with col1:
         if st.button("サッカー"):
             st.session_state.genre = "サッカー"
+            st.session_state.quiz_index = 0
             st.rerun()
     with col2:
         if st.button("テニス"):
             st.session_state.genre = "テニス"
+            st.session_state.quiz_index = 0
             st.rerun()
     with col3:
         if st.button("野球"):
             st.session_state.genre = "野球"
+            st.session_state.quiz_index = 0
             st.rerun()
     st.stop()
 
